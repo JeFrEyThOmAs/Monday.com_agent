@@ -1,23 +1,18 @@
 import express from "express";
+import dotenv from "dotenv";
+import chatRouter from "./routes/chat.js";
 
-import {
-    getTasks,
-    getTasksByPriority,
-    getTasksByStatus,
-    getTaskById,
-    getTasksByOwner
-} from "./services/mondayService.js";
+dotenv.config();
 
 const app = express();
 
-app.get("/", async (req, res) => {
+app.use(express.json());
 
-    const highPriority = await getTasksByPriority("High");
+// Routes
+app.use("/chat", chatRouter);
 
-    res.json(highPriority);
+const PORT = process.env.PORT || 3000;
 
-});
-
-app.listen(3000, () => {
-    console.log("Server running");
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
