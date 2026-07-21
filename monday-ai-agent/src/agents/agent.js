@@ -119,17 +119,23 @@ import { createAgent } from "langchain";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
 import { tools } from "../tools/mondayTools.js";
+import { dealTools } from "../tools/dealFunnelTools.js";
 
 // ----------------------------
 // Gemini Model
 // ----------------------------
 
 const model = new ChatGoogleGenerativeAI({
-    apiKey: process.env.GOOGLE_API_KEY,
+    apiKey: process.env.GEMINI_API_KEY,
     model: "gemini-2.5-flash",
     temperature: 0,
     maxRetries: 2,
 });
+
+const allTools = [
+    ...tools,
+    ...dealTools,
+];
 
 // ----------------------------
 // Agent
@@ -137,29 +143,36 @@ const model = new ChatGoogleGenerativeAI({
 
 export const agent = createAgent({
     model,
-
-    tools,
-
+    tools: allTools,
     systemPrompt: `
 You are an AI Project Management Assistant.
 
-You have access to Monday.com through tools.
+You have access to multiple Monday.com boards.
+
+You can answer questions about:
+
+- Tasks
+- Deal Funnel
 
 Whenever the user asks about:
 - tasks
 - projects
+- deals
 - owners
-- status
+- task status
+- deal status
 - priorities
+- sectors
+- deal stages
+- closure probability
 
 ALWAYS use the appropriate tool.
 
-Never make up task information.
+Never make up information.
 
 If the required information is unavailable, clearly tell the user.
 
 When you receive tool results:
-
 - Summarize naturally.
 - Don't dump raw JSON unless the user explicitly asks.
 - Answer like a helpful project manager.
