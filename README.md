@@ -409,6 +409,6 @@ This project is licensed under the MIT License.
 
 **Jeffrey Thomas**
 
-GitHub: https://github.com/your-github
+GitHub: https://github.com/JeFrEyThOmAs
 
-LinkedIn: https://linkedin.com/in/your-linkedin
+LinkedIn: https://www.linkedin.com/in/jeffrey-thomas-49000826b/
