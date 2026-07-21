@@ -25,19 +25,24 @@ Rather than navigating multiple dashboards, filtering data manually, or writing 
 The assistant automatically determines which tool to use, fetches live data from Monday.com, and returns an easy-to-read response.
 
 ---
+
 ## 📸 Preview
 
 <p align="center">
-  <img src="./screenshots/a.png" width="900">
+  <img src="./screenshots/a.jpg" width="900">
 </p>
 
 <br>
 
 <p align="center">
-  <img src="./screenshots/b.png" width="900">
+  <img src="./screenshots/b.jpg" width="900">
 </p>
+
+---
+
 # ✨ Features
 
+...
 ## 📋 Task Management
 
 - Retrieve all tasks
